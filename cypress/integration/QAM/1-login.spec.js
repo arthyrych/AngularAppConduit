@@ -1,6 +1,6 @@
-describe('login', ()=> {
+describe('login test suite', ()=> {
 
-    it('sign in', ()=> {
+    it('just login', ()=> {
         cy.loginToApp()
     })
 
