@@ -1,35 +1,14 @@
 /// <reference types="Cypress" />
 
-describe('BE test suite', ()=> {
+describe('test suite with mocked responses', ()=> {
 
     beforeEach(()=> {
         cy.server()
-        cy.route('GET', '**/tags', 'fixture:tags.json')
         cy.loginToApp()
     })
 
-    it.skip('verify request and response', ()=> {
-
-        cy.server()
-        cy.route('POST', '**/articles').as('postArticles')
-
-        cy.contains('New Article').click()
-        cy.get('[formcontrolname="title"]').type('This is a title!')
-        cy.get('[formcontrolname="description"]').type('This is an article about!')
-        cy.get('[formcontrolname="body"]').type('This is content!')
-        cy.contains(' Publish Article ').click()
-
-        cy.wait('@postArticles')
-        cy.get('@postArticles').then( xhr => {
-            console.log(xhr)
-            expect(xhr.status).to.equal(200)
-            expect(xhr.request.body.article.body).to.equal('This is content!')
-            expect(xhr.response.body.article.description).to.equal('This is an article about!')
-        })
-       
-    })
-
-    it.skip('should give mocked tags', ()=> {
+    it('return mocked tags', ()=> {
+        cy.route('GET', '**/tags', 'fixture:tags.json')
         cy.get('.tag-list').should('contain', 'cypress').and('contain', 'automation').and('contain', 'test')
     })
 
@@ -57,7 +36,6 @@ describe('BE test suite', ()=> {
         })
 
         cy.get('app-article-list button').eq(1).click().should('contain', '6')
-
     })
 
 })
