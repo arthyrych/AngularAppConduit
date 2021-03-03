@@ -6,29 +6,7 @@ describe('test suite with intercept method instead server and route', ()=> {
         cy.loginToApp()
     })
 
-
-    it('1 verify request and response', ()=> {
-
-        cy.intercept('POST', '**/articles').as('postArticles')
-
-        cy.contains('New Article').click()
-        cy.get('[formcontrolname="title"]').type('This is a title!')
-        cy.get('[formcontrolname="description"]').type('This is an article about!')
-        cy.get('[formcontrolname="body"]').type('This is content!')
-        cy.contains(' Publish Article ').click()
-
-        cy.wait('@postArticles')
-        cy.get('@postArticles').then( xhr => {
-            console.log(xhr)
-            expect(xhr.response.statusCode).to.equal(200)
-            expect(xhr.request.body.article.body).to.equal('This is content!')
-            expect(xhr.response.body.article.description).to.equal('This is an article about!')
-        })
-       
-    })
-
-
-    it('2 intercepting and modifying the request and response', ()=> {
+    it('1 intercepting and modifying the request and response', ()=> {
 
         // cy.intercept('POST', '**/articles', (req) => {
         //     req.body.article.description = 'This is the intercepted request description'
@@ -58,13 +36,13 @@ describe('test suite with intercept method instead server and route', ()=> {
     })
 
 
-    it('3 return mocked tags', ()=> {
+    it('2 return mocked tags', ()=> {
         cy.intercept({method: 'GET', path: 'tags'}, {fixture: 'tags.json'})
         cy.get('.tag-list').should('contain', 'cypress').and('contain', 'automation').and('contain', 'test')
     })
 
 
-    it('4 verify global feed likes count', ()=> {
+    it('3 verify global feed likes count', ()=> {
         cy.intercept('GET', '**/articles*', {fixture: 'articles.json'})
         cy.intercept('GET', '**/articles/feed*', {"articles":[],"articlesCount":0})
 

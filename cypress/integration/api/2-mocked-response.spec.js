@@ -3,18 +3,17 @@
 describe('test suite with mocked responses', ()=> {
 
     beforeEach(()=> {
-        cy.server()
         cy.loginToApp()
     })
 
-    it('return mocked tags', ()=> {
-        cy.route('GET', '**/tags', 'fixture:tags.json')
+    it('1 return mocked tags', ()=> {
+        cy.intercept('GET', '**/tags', {fixture: 'tags.json'})
         cy.get('.tag-list').should('contain', 'cypress').and('contain', 'automation').and('contain', 'test')
     })
 
-    it('verify global feed likes count', ()=> {
-        cy.route('GET', '**/articles*', 'fixture:articles.json')
-        cy.route('GET', '**/articles/feed*', '{"articles":[],"articlesCount":0}')
+    it('2 verify global feed likes count', ()=> {
+        cy.intercept('GET', '**/articles*', {fixture: 'articles.json'})
+        cy.intercept('GET', '**/articles/feed*', {"articles":[],"articlesCount":0})
 
         cy.contains('Global Feed').click()
 
@@ -32,7 +31,7 @@ describe('test suite with mocked responses', ()=> {
 
         cy.fixture('articles').then( file => {
             const articleSlug = file.articles[1].slug
-            cy.route('POST', '**/articles/' + articleSlug + '/favorite', file)
+            cy.intercept('POST', '**/articles/' + articleSlug + '/favorite', file)
         })
 
         cy.get('app-article-list button').eq(1).click().should('contain', '6')
