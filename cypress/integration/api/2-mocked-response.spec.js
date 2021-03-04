@@ -6,35 +6,45 @@ describe('test suite with mocked responses', ()=> {
         cy.loginToApp()
     })
 
-    it('1 return mocked tags', ()=> {
+    it('return and assert mocked tags', ()=> {
+        // intercepting the api call, providing mocked response, asserting ui info was changed to the mocked one
         cy.intercept('GET', '**/tags', {fixture: 'tags.json'})
-        cy.get('.tag-list').should('contain', 'cypress').and('contain', 'automation').and('contain', 'test')
+        cy.get('.tag-list')
+            .should('contain', 'cypress')
+            .and('contain', 'automation')
+            .and('contain', 'test')
     })
 
-    it('2 verify global feed likes count', ()=> {
+    it('2 verify global feed likes count with mocked response', ()=> {
+        // intercepting api calls and providing mocked responses
         cy.intercept('GET', '**/articles*', {fixture: 'articles.json'})
         cy.intercept('GET', '**/articles/feed*', {"articles":[],"articlesCount":0})
 
         cy.contains('Global Feed').click()
 
-        // cypress assertion
+        // likes count assertion (cypress)
         cy.get('app-article-list button').then( buttons => {
             cy.wrap(buttons).first().should('contain', '1')
             cy.wrap(buttons).eq(1).should('contain', '5')
         })
 
-        // chai assertion
+        // likes count assertion (chai)
         cy.get('app-article-list button').then( listOfButtons => {
             expect(listOfButtons[0]).to.contain('1')
             expect(listOfButtons[1]).to.contain('5')
         })
 
+        // modifying mock file, intercepting the api call, providing mocked and modified response
         cy.fixture('articles').then( file => {
             const articleSlug = file.articles[1].slug
             cy.intercept('POST', '**/articles/' + articleSlug + '/favorite', file)
         })
 
-        cy.get('app-article-list button').eq(1).click().should('contain', '6')
+        // asserting likes count from the mocked response
+        cy.get('app-article-list button')
+            .eq(1)
+            .click()
+            .should('contain', '6')
     })
 
 })
