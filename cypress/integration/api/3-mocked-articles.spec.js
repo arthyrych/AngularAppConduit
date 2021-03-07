@@ -1,21 +1,12 @@
 /// <reference types="Cypress" />
 
-describe('test suite with mocked responses', ()=> {
+describe('test suite with mocked articles', ()=> {
 
     beforeEach(()=> {
         cy.loginToApp()
     })
 
-    it('return and assert mocked tags', ()=> {
-        // intercepting the api call, providing mocked response, asserting ui info was changed to the mocked one
-        cy.intercept('GET', '**/tags', {fixture: 'tags.json'})
-        cy.get('.tag-list')
-            .should('contain', 'cypress')
-            .and('contain', 'automation')
-            .and('contain', 'test')
-    })
-
-    it('2 verify global feed likes count with mocked response', ()=> {
+    it('verify global feed likes count with mocked response', ()=> {
         // intercepting api calls and providing mocked responses
         cy.intercept('GET', '**/articles*', {fixture: 'articles.json'})
         cy.intercept('GET', '**/articles/feed*', {"articles":[],"articlesCount":0})
