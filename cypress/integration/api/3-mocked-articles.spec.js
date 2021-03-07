@@ -7,9 +7,10 @@ describe('test suite with mocked articles', ()=> {
     })
 
     it('verify global feed likes count with mocked response', ()=> {
+
         // intercepting api calls and providing mocked responses
-        cy.intercept('GET', '**/articles*', {fixture: 'articles.json'})
-        cy.intercept('GET', '**/articles/feed*', {"articles":[],"articlesCount":0})
+        cy.intercept({method: 'GET', path: '**/articles*'}, {fixture: 'articles.json'})
+        cy.intercept({method: 'GET', path: '**/articles/feed*'}, {"articles":[],"articlesCount":0})
 
         cy.contains('Global Feed').click()
 
@@ -32,10 +33,7 @@ describe('test suite with mocked articles', ()=> {
         })
 
         // asserting likes count from the mocked response
-        cy.get('app-article-list button')
-            .eq(1)
-            .click()
-            .should('contain', '6')
+        cy.get('app-article-list button').eq(1).click().should('contain', '6')
     })
 
 })

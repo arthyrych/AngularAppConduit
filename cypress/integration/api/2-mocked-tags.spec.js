@@ -7,12 +7,13 @@ describe('test suite with mocked tags', ()=> {
     })
 
     it('return and assert mocked tags', ()=> {
+
         // intercepting the api call, providing mocked response, asserting ui info was changed to the mocked one
-        cy.intercept('GET', '**/tags', {fixture: 'tags.json'})
-        cy.get('.tag-list')
-            .should('contain', 'cypress')
-            .and('contain', 'automation')
-            .and('contain', 'test')
+
+        // cy.intercept('GET', '**/tags', {fixture: 'tags.json'})
+        cy.intercept({method: 'GET', path: '**/tags'}, {fixture: 'tags.json'})
+        cy.get('.tag-list').should('contain', 'cypress').and('contain', 'automation').and('contain', 'test')
+        
     })
 
 })
