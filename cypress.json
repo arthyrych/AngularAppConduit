@@ -7,5 +7,10 @@
     "retries": {
         "runMode": 2,
         "openMode": 0
+    },
+    "env": {
+        "username": "fake-email@gmail.com",
+        "pass": "fakepass",
+        "apiUrl": "https://conduit.productionready.io/"
     }
 }

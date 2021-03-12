@@ -27,7 +27,7 @@ describe('test suite with API calls', ()=> {
             // posting a new article using saved token
             cy.request({
                 method: 'POST',
-                url: 'https://conduit.productionready.io/api/articles/',
+                url: Cypress.env('apiUrl') + 'api/articles/',
                 headers: {'Authorization': 'Token ' + token},
                 body: bodyRequest
             }).then( response => {
@@ -43,7 +43,7 @@ describe('test suite with API calls', ()=> {
             // verifying the article was deleted
             cy.request({
                 method: 'GET',
-                url: 'https://conduit.productionready.io/api/articles?limit=10&offset=0',
+                url: Cypress.env('apiUrl') + 'api/articles?limit=10&offset=0',
                 headers: {'Authorization': 'Token ' + token}
             }).its('body').then( body => {
                 console.log(body)

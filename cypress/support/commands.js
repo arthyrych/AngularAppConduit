@@ -27,8 +27,8 @@
 // login through ui using creds
 Cypress.Commands.add('loginToAppUi', ()=> {
     cy.visit('/login')
-    cy.get('[placeholder="Email"]').type('fake-email@gmail.com')
-    cy.get('[placeholder="Password"]').type('fakepass')
+    cy.get('[placeholder="Email"]').type(Cypress.env('username'))
+    cy.get('[placeholder="Password"]').type(Cypress.env('pass'))
     cy.get('form').submit()
 })
 
@@ -38,13 +38,13 @@ Cypress.Commands.add('loginToApp', ()=> {
     // login creads
     const userCreds = {
         "user": {
-            "email": "fake-email@gmail.com",
-            "password": "fakepass"
+            "email": Cypress.env('username'),
+            "password": Cypress.env('pass')
         }
     }
 
     // login api call with creds
-    cy.request('POST', 'https://conduit.productionready.io/api/users/login', userCreds)
+    cy.request('POST', Cypress.env('apiUrl') + 'api/users/login', userCreds)
     .its('body').then( body => {
 
         // saving token from the response body
