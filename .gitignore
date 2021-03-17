@@ -48,3 +48,4 @@ Thumbs.db
 /cypress/screenshots
 /cypress/results
 /mochawesome-report
+/dockerReports
