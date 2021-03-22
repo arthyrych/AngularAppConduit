@@ -5,9 +5,9 @@
     "passes": 5,
     "pending": 0,
     "failures": 0,
-    "start": "2021-03-19T16:03:47.659Z",
-    "end": "2021-03-19T16:04:18.841Z",
-    "duration": 16002,
+    "start": "2021-03-22T19:27:33.606Z",
+    "end": "2021-03-22T19:28:12.101Z",
+    "duration": 21190,
     "testsRegistered": 5,
     "passPercent": 100,
     "pendingPercent": 0,
@@ -18,16 +18,16 @@
   },
   "results": [
     {
-      "uuid": "ed9d550f-988b-439c-afee-51f33c9188c4",
+      "uuid": "758ce7d5-05b4-4c8d-a9f1-a2982b50d413",
       "title": "",
-      "fullFile": "cypress/integration/api/2-mocked-tags.spec.js",
-      "file": "cypress/integration/api/2-mocked-tags.spec.js",
+      "fullFile": "cypress\\integration\\api\\2-mocked-tags.spec.js",
+      "file": "cypress\\integration\\api\\2-mocked-tags.spec.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "42375c11-c9ea-402e-97db-1d909cd09627",
+          "uuid": "2bded254-55d2-4c75-8948-9e3ee9376d3a",
           "title": "test suite with mocked tags",
           "fullFile": "",
           "file": "",
@@ -38,7 +38,7 @@
               "title": "return and assert mocked tags",
               "fullTitle": "test suite with mocked tags return and assert mocked tags",
               "timedOut": null,
-              "duration": 1468,
+              "duration": 1803,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -47,20 +47,20 @@
               "context": null,
               "code": "// intercepting the api call, providing mocked response, asserting ui info was changed to the mocked one\n// cy.intercept('GET', '**/tags', {fixture: 'tags.json'})\ncy.intercept({\n  method: 'GET',\n  path: '**/tags'\n}, {\n  fixture: 'tags.json'\n});\ncy.get('.tag-list').should('contain', 'cypress').and('contain', 'automation').and('contain', 'test');",
               "err": {},
-              "uuid": "7b7ebfd9-9c61-4608-b043-205239b355a4",
-              "parentUUID": "42375c11-c9ea-402e-97db-1d909cd09627",
+              "uuid": "deb48256-1a09-43ae-bd8e-0b447b7d66d4",
+              "parentUUID": "2bded254-55d2-4c75-8948-9e3ee9376d3a",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "7b7ebfd9-9c61-4608-b043-205239b355a4"
+            "deb48256-1a09-43ae-bd8e-0b447b7d66d4"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 1468,
+          "duration": 1803,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -76,16 +76,16 @@
       "_timeout": 2000
     },
     {
-      "uuid": "c6ddc855-8821-4355-8009-72af8f5ce707",
+      "uuid": "e0c07192-5931-4769-a019-55bff6e849ae",
       "title": "",
-      "fullFile": "cypress/integration/api/3-mocked-articles.spec.js",
-      "file": "cypress/integration/api/3-mocked-articles.spec.js",
+      "fullFile": "cypress\\integration\\api\\3-mocked-articles.spec.js",
+      "file": "cypress\\integration\\api\\3-mocked-articles.spec.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "e5b8f460-47d8-4a13-a3c1-39c3e309bc2e",
+          "uuid": "eae1abe5-218f-4b21-b913-3ce1b00188ff",
           "title": "test suite with mocked articles",
           "fullFile": "",
           "file": "",
@@ -96,7 +96,7 @@
               "title": "verify global feed likes count with mocked response",
               "fullTitle": "test suite with mocked articles verify global feed likes count with mocked response",
               "timedOut": null,
-              "duration": 2021,
+              "duration": 2312,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -105,20 +105,20 @@
               "context": null,
               "code": "// intercepting api calls and providing mocked responses\ncy.intercept({\n  method: 'GET',\n  path: '**/articles*'\n}, {\n  fixture: 'articles.json'\n});\ncy.intercept({\n  method: 'GET',\n  path: '**/articles/feed*'\n}, {\n  \"articles\": [],\n  \"articlesCount\": 0\n});\ncy.contains('Global Feed').click(); // likes count assertion (cypress)\ncy.get('app-article-list button').then(function (buttons) {\n  cy.wrap(buttons).first().should('contain', '1');\n  cy.wrap(buttons).eq(1).should('contain', '5');\n}); // likes count assertion (chai)\ncy.get('app-article-list button').then(function (listOfButtons) {\n  expect(listOfButtons[0]).to.contain('1');\n  expect(listOfButtons[1]).to.contain('5');\n}); // modifying mock file, intercepting the api call, providing mocked and modified response\ncy.fixture('articles').then(function (file) {\n  var articleSlug = file.articles[1].slug;\n  cy.intercept('POST', '**/articles/' + articleSlug + '/favorite', file);\n}); // asserting likes count from the mocked response\ncy.get('app-article-list button').eq(1).click().should('contain', '6');",
               "err": {},
-              "uuid": "9e335177-d6dd-49a6-9f63-7bb2e94b55d1",
-              "parentUUID": "e5b8f460-47d8-4a13-a3c1-39c3e309bc2e",
+              "uuid": "b689d08b-6dc0-4ba7-a17e-c082f7919a7e",
+              "parentUUID": "eae1abe5-218f-4b21-b913-3ce1b00188ff",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "9e335177-d6dd-49a6-9f63-7bb2e94b55d1"
+            "b689d08b-6dc0-4ba7-a17e-c082f7919a7e"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 2021,
+          "duration": 2312,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -134,16 +134,16 @@
       "_timeout": 2000
     },
     {
-      "uuid": "2372ff93-98f8-45b4-a8f5-477acef61b25",
+      "uuid": "52098bdf-d18e-4e6d-b640-14f3f036f142",
       "title": "",
-      "fullFile": "cypress/integration/api/4-api-request.spec.js",
-      "file": "cypress/integration/api/4-api-request.spec.js",
+      "fullFile": "cypress\\integration\\api\\4-api-request.spec.js",
+      "file": "cypress\\integration\\api\\4-api-request.spec.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "51699542-372b-4925-9f60-7c444bfd49e6",
+          "uuid": "f322deb7-757d-4278-9d90-30f12c6a507f",
           "title": "test suite with API calls",
           "fullFile": "",
           "file": "",
@@ -154,7 +154,7 @@
               "title": "post and delete article in global feed",
               "fullTitle": "test suite with API calls post and delete article in global feed",
               "timedOut": null,
-              "duration": 5206,
+              "duration": 7981,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -163,20 +163,20 @@
               "context": null,
               "code": "// id for the article\nvar id = Date.now(); // content for the new article request\nvar bodyRequest = {\n  \"article\": {\n    \"tagList\": [],\n    \"title\": \"API request from Postman (title) \" + id,\n    \"description\": \"API request from postman (description)\",\n    \"body\": \"API request from postman (body)\"\n  }\n}; // getting token from our loginToApp command\ncy.get('@token').then(function (token) {\n  // posting a new article using saved token\n  cy.request({\n    method: 'POST',\n    url: Cypress.env('apiUrl') + 'api/articles/',\n    headers: {\n      'Authorization': 'Token ' + token\n    },\n    body: bodyRequest\n  }).then(function (response) {\n    console.log(response);\n    expect(response.status).to.equal(200);\n  }); // deleting the article through UI\n  cy.contains('Global Feed').click();\n  cy.get('.article-preview').first().click();\n  cy.get('.article-actions').contains('Delete Article').click(); // verifying the article was deleted\n  cy.request({\n    method: 'GET',\n    url: Cypress.env('apiUrl') + 'api/articles?limit=10&offset=0',\n    headers: {\n      'Authorization': 'Token ' + token\n    }\n  }).its('body').then(function (body) {\n    console.log(body);\n    expect(body.articles[0].title).not.to.equal('API request from Postman (title) ' + id);\n  });\n});",
               "err": {},
-              "uuid": "420407fe-2269-4372-87de-4844e3d0c4d4",
-              "parentUUID": "51699542-372b-4925-9f60-7c444bfd49e6",
+              "uuid": "16ea7221-fab0-416a-ba23-478a7a299f29",
+              "parentUUID": "f322deb7-757d-4278-9d90-30f12c6a507f",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "420407fe-2269-4372-87de-4844e3d0c4d4"
+            "16ea7221-fab0-416a-ba23-478a7a299f29"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 5206,
+          "duration": 7981,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
@@ -192,16 +192,16 @@
       "_timeout": 2000
     },
     {
-      "uuid": "d75ac9aa-dc3e-4955-9551-b5f736073dff",
+      "uuid": "66447545-cd8d-4a4b-be2b-61b084ff3d23",
       "title": "",
-      "fullFile": "cypress/integration/api/1-request-response.spec.js",
-      "file": "cypress/integration/api/1-request-response.spec.js",
+      "fullFile": "cypress\\integration\\api\\1-request-response.spec.js",
+      "file": "cypress\\integration\\api\\1-request-response.spec.js",
       "beforeHooks": [],
       "afterHooks": [],
       "tests": [],
       "suites": [
         {
-          "uuid": "7df04b94-d077-4e66-9362-6ccc61b9602d",
+          "uuid": "285000c9-9559-4673-9b10-fcd6459d1269",
           "title": "request-response test suite",
           "fullFile": "",
           "file": "",
@@ -212,7 +212,7 @@
               "title": "intercept, verify request and response",
               "fullTitle": "request-response test suite intercept, verify request and response",
               "timedOut": null,
-              "duration": 3777,
+              "duration": 5104,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -221,8 +221,8 @@
               "context": null,
               "code": "// intercepting the api call, saving the call as an alias (global variable)\n//cy.intercept('POST', '**/articles').as('postArticles')\ncy.intercept({\n  method: 'POST',\n  path: '**/articles'\n}).as('postArticles'); // creating a new article through ui\ncy.contains('New Article').click();\ncy.get('[formcontrolname=\"title\"]').type('This is a title!');\ncy.get('[formcontrolname=\"description\"]').type('This is a description!');\ncy.get('[formcontrolname=\"body\"]').type('This is content!');\ncy.contains(' Publish Article ').click(); // waiting for the response, taking the response as an object, making assertions for request and response\ncy.wait('@postArticles');\ncy.get('@postArticles').then(function (xhr) {\n  console.log(xhr);\n  expect(xhr.request.body.article.body).to.equal('This is content!');\n  expect(xhr.response.statusCode).to.equal(200);\n  expect(xhr.response.body.article.description).to.equal('This is a description!');\n});",
               "err": {},
-              "uuid": "fb5fa601-55a5-49ce-936f-671afebb3d82",
-              "parentUUID": "7df04b94-d077-4e66-9362-6ccc61b9602d",
+              "uuid": "6eba651f-6366-432f-a544-bbc9f8e9a69d",
+              "parentUUID": "285000c9-9559-4673-9b10-fcd6459d1269",
               "isHook": false,
               "skipped": false
             },
@@ -230,7 +230,7 @@
               "title": "intercept, modify, verify request and response",
               "fullTitle": "request-response test suite intercept, modify, verify request and response",
               "timedOut": null,
-              "duration": 3530,
+              "duration": 3990,
               "state": "passed",
               "speed": "slow",
               "pass": true,
@@ -239,21 +239,21 @@
               "context": null,
               "code": "// intercepting the api call, modifying it, saving the call as an alias (global variable)\ncy.intercept({\n  method: 'POST',\n  path: '**/articles'\n}, function (req) {\n  req.body.article.title = 'This is intercepted and modified title';\n  req.body.article.description = 'This is interecepted and modified description';\n}).as('postArticles'); // creating a new article through ui\ncy.contains('New Article').click();\ncy.get('[formcontrolname=\"title\"]').type('This is a title created through UI!');\ncy.get('[formcontrolname=\"description\"]').type('This is a discription created through UI!');\ncy.get('[formcontrolname=\"body\"]').type('This is content created through UI!');\ncy.contains('Publish Article').click(); // waiting for the response, taking the response as an object, making assertions for request and response\ncy.wait('@postArticles');\ncy.get('@postArticles').then(function (xhr) {\n  console.log(xhr); // asserting request\n  expect(xhr.request.body.article.title).to.equal('This is intercepted and modified title');\n  expect(xhr.request.body.article.description).to.equal('This is interecepted and modified description');\n  expect(xhr.request.body.article.body).to.equal('This is content created through UI!'); // asserting response\n  expect(xhr.response.statusCode).to.equal(200);\n  expect(xhr.response.body.article.title).to.equal('This is intercepted and modified title');\n  expect(xhr.response.body.article.description).to.equal('This is interecepted and modified description');\n  expect(xhr.response.body.article.body).to.equal('This is content created through UI!');\n});",
               "err": {},
-              "uuid": "8d49bbac-a882-4036-a4ae-60657e0e01e7",
-              "parentUUID": "7df04b94-d077-4e66-9362-6ccc61b9602d",
+              "uuid": "e8219829-d866-4951-9737-efb83397c835",
+              "parentUUID": "285000c9-9559-4673-9b10-fcd6459d1269",
               "isHook": false,
               "skipped": false
             }
           ],
           "suites": [],
           "passes": [
-            "fb5fa601-55a5-49ce-936f-671afebb3d82",
-            "8d49bbac-a882-4036-a4ae-60657e0e01e7"
+            "6eba651f-6366-432f-a544-bbc9f8e9a69d",
+            "e8219829-d866-4951-9737-efb83397c835"
           ],
           "failures": [],
           "pending": [],
           "skipped": [],
-          "duration": 7307,
+          "duration": 9094,
           "root": false,
           "rootEmpty": false,
           "_timeout": 2000
