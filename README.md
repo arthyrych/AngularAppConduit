@@ -78,3 +78,11 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 <br />
 
 [![Brought to you by Thinkster](https://raw.githubusercontent.com/gothinkster/realworld/master/media/end.png)](https://thinkster.io)
+
+# Cypress milestones
+1) tests
+2) npm scripts 
+3) env variables 
+4) junit and mochawesome reporters
+5) docker container
+6) dashboard 
