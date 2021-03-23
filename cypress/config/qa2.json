@@ -1,0 +1,7 @@
+{
+    "env": {
+        "username": "fake-email@gmail.com",
+        "pass": "fakepass",
+        "apiUrl": "https://conduit.productionready.io/"
+    }
+}

@@ -13,7 +13,7 @@
     "prereport": "npm run delete:reports",
     "mochawesome:merge": "npx mochawesome-merge \"cypress/results/mochawesome/*.json\" > mochawesome.json && npx marge mochawesome.json",
     "junit:merge": "npx junit-merge -d cypress/results/junit -o cypress/results/junit/result.xml",
-    "cy:run": "npx cypress run",
+    "cy:run": "npx cypress run --browser chrome --headless",
     "cy:run:api": "npm run cy:run -- --spec 'cypress/integration/api/*'",
     "cy:run:api:dash": "npm run cy:run:api -- --record --key c0f93001-4860-4f56-8fb3-85e7cdb0655c",
     "cy:run:api:dash:prereport": "npm run prereport && npm run cy:run:api:dash",

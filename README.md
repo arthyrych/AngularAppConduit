@@ -84,5 +84,5 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 2) npm scripts 
 3) env variables 
 4) junit and mochawesome reporters
-5) docker container
-6) dashboard 
+5) dashboard
+6) docker container
