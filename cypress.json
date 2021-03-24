@@ -10,7 +10,7 @@
   },
   "env": {
     "username": "fake-email@gmail.com",
-    "pass": "fakepass",
+    "pass": "qwerty123456",
     "apiUrl": "https://conduit.productionready.io/"
   },
   "reporter": "cypress-multi-reporters",
