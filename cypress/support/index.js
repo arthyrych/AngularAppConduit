@@ -16,5 +16,8 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 
+// dark theme 
+// require('cypress-dark/src/halloween')
+
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
