@@ -79,7 +79,7 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 
 [![Brought to you by Thinkster](https://raw.githubusercontent.com/gothinkster/realworld/master/media/end.png)](https://thinkster.io)
 
-# Cypress milestones
+# Cypress milestones (C:\Users\arthyrych\AppData\Local\Cypress\Cache\6.8.0\Cypress)
 1) tests
 2) npm scripts 
 3) env variables 
