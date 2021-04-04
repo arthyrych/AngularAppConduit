@@ -15,7 +15,7 @@
     "junit:merge": "npx junit-merge -d cypress/results/junit -o cypress/results/junit/result.xml",
     "cy:run": "npx cypress run --browser chrome --headless",
     "cy:run:api": "npm run cy:run -- --spec 'cypress/integration/api/*'",
-    "cy:run:api:dash": "npm run cy:run:api -- --record --key c0f93001-4860-4f56-8fb3-85e7cdb0655c --parallel --ci-build-id 889",
+    "cy:run:api:dash": "npm run cy:run:api -- --record --key c0f93001-4860-4f56-8fb3-85e7cdb0655c",
     "cy:run:api:dash:prereport": "npm run prereport && npm run cy:run:api:dash",
     "cy:run:api:dash:prereport:qa": "npm run prereport && npm run cy:run:api:dash -- --env configFile=qa",
     "cy:run:api:dash:prereport:qa2": "npm run prereport && npm run cy:run:api:dash -- --env configFile=qa2",
